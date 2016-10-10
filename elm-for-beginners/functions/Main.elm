@@ -4,18 +4,22 @@ import Html exposing (div)
 import String
 
 
+add : Int -> Int -> Int
 add a b =
     a + b
 
 
+result : Bool
 result =
     add 1 2 |> add 5 |> \x -> x % 2 == 0
 
 
+counter : Int
 counter =
     0
 
 
+increment : Int -> Int -> Int
 increment cnt amt =
     let
         localCount =
@@ -24,6 +28,7 @@ increment cnt amt =
         localCount
 
 
+uppercaseLongName : String -> String
 uppercaseLongName name =
     let
         resultName =
@@ -35,6 +40,7 @@ uppercaseLongName name =
         resultName ++ " - name length: " ++ (String.length resultName |> toString)
 
 
+main : Html.Html msg
 main =
     div []
         [ Html.text (toString result)

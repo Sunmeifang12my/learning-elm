@@ -169,20 +169,6 @@ Lists:
 1 :: 2 :: 3 :: 4 :: []
 ```
 
-let...in
-
-```elm
-```
-
-```elm
-```
-
-```elm
-```
-
-```elm
-```
-
 Tooling
 
 ```sh
@@ -201,6 +187,8 @@ elm-format
 
 ## Resources
 
+* [Course: Elm for Beginners](http://courses.knowthen.com/courses/elm-for-beginners)
+* [Book: Elm in Action](https://www.manning.com/books/elm-in-action)
 * [Learn X in Y Minutes](https://learnxinyminutes.com/docs/elm/)
 * [Elm Syntax](http://elm-lang.org/docs/syntax)
 * [Union Types](http://guide.elm-lang.org/types/union_types.html)

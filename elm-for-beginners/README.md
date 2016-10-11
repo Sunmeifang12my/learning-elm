@@ -219,6 +219,58 @@ main =
 Writing type annotations first can help you think about your functions and write better functions.
 If you are unsure about what the type annotation should be you can start with the inferred types.
 
+## Planning the Scorekeeper App
+
+Three sections in an Elm app:
+
+* Model (state)
+* Update (behavior)
+* View (UI)
+
+```elm
+type alias Player = {
+  id: Int
+  , name: String
+  , points: Int
+}
+
+type alias Play = {
+  id: Int
+  , playerId: Int
+  , name: String
+  , points: Int
+}
+
+type alias Model = {
+  players: List Player
+  , playerName: String
+  , playerId: Maybe Int
+  , plays: List Play
+}
+
+type Msg = Edit | Score | Input | Save | Cancel | DeletePlay
+```
+
+We should break our app up into a hierarchy of components.
+
+* main view
+  * player section
+    * player list header
+    * player list
+      * player
+    * point total
+  * player form
+  * play section
+    * play list header
+    * play list
+      * play
+
+TODO: create functions for each of the above.
+
+## Using a Build Process
+
+There is a starter environment in the directory "05 scorekeeper-starter".
+
 ## Resources
 
 * [Elm Syntax](http://elm-lang.org/docs/syntax)

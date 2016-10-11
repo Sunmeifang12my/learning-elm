@@ -13,6 +13,15 @@
 * Has function argument destructuring
 * Has auto currying (partially apply a function by passing only some of its arguments)
 
+## Strengths
+
+* Pragmatic and simple
+* Convention over configuration
+* Developer and beginner friendly with very good developer ergonomics. Compiler is very helpful.
+* Great tooling
+* Draws on strengths of functional programming, static type checking, and Haskell
+* Draws of many of the best ideas in frameworks like React and reactive programming. Also borrows async ideas from Erlang.
+
 ## Examples
 
 ```elm

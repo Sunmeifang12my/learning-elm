@@ -188,11 +188,15 @@ elm-format
 ## Resources
 
 * [Course: Elm for Beginners](http://courses.knowthen.com/courses/elm-for-beginners)
+* [Elm Conf](https://www.elm-conf.us)
 * [Book: Elm in Action](https://www.manning.com/books/elm-in-action)
 * [Learn X in Y Minutes](https://learnxinyminutes.com/docs/elm/)
 * [Elm Syntax](http://elm-lang.org/docs/syntax)
 * [Union Types](http://guide.elm-lang.org/types/union_types.html)
-* [Adventures in Elm (Video)](https://www.youtube.com/watch?v=cgXhMc8M4X4)
+* [Video: Richard Feldman - Introduction to Elm (March 2016)](https://www.youtube.com/watch?v=zBHB9i8e3Kc)
+* [Video: Confident Frontend with Elm (Jack Franklin) - Full Stack Fest 2016](https://www.youtube.com/watch?v=rDQ22Yg3Fms)
+* [Video: Adventures in Elm](https://www.youtube.com/watch?v=cgXhMc8M4X4)
+* [Video: "Beyond Hello World and Todo Lists" by Ossi Hanhinen ](https://www.youtube.com/watch?v=vpc80c5iC6k)
 * [HTML to Elm (Tool)](http://mbylstra.github.io/html-to-elm/)
 * [Learning FP the hard way: Experiences on the Elm language](https://gist.github.com/ohanhi/0d3d83cf3f0d7bbea9db)
 * [Learning Elm - Lucas Reis](http://lucasmreis.github.io/blog/learning-elm-part-1/)

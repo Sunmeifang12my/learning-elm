@@ -54,6 +54,44 @@ update msg model =
             Debug.log "Input updated model"
                 { model | name = name }
 
+        Save ->
+            case model.playerId of
+                Just playerId ->
+                    let
+                        players =
+                            List.map
+                                (\p ->
+                                    if p.id == playerId then
+                                        { p
+                                            | name = model.name
+                                        }
+                                    else
+                                        p
+                                )
+                                model.players
+                    in
+                        { model
+                            | players = players
+                        }
+
+                Nothing ->
+                    let
+                        newPlayer =
+                            Player 123 model.name 0
+
+                        players =
+                            newPlayer :: model.players
+                    in
+                        { model
+                            | players = players
+                        }
+
+        Cancel ->
+            { model
+                | name = ""
+                , playerId = Nothing
+            }
+
         _ ->
             model
 
@@ -78,7 +116,7 @@ playerForm model =
             , value model.name
             ]
             []
-        , button [ type' "submit" ] [ text "Save" ]
+        , button [ type' "submit", onClick Save ] [ text "Save" ]
         , button [ type' "button", onClick Cancel ] [ text "Cancel" ]
         ]
 

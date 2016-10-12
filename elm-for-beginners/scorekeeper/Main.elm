@@ -165,6 +165,13 @@ deletePlay play model =
         }
 
 
+edit : Player -> Model -> Model
+edit player model =
+    { model
+        | name = player.name
+    }
+
+
 update : Msg -> Model -> Model
 update msg model =
     case msg of
@@ -184,14 +191,14 @@ update msg model =
                 , playerId = Nothing
             }
 
+        Edit player ->
+            edit player model
+
         Score player points ->
             score player points model
 
         DeletePlay play ->
             deletePlay play model
-
-        _ ->
-            model
 
 
 view : Model -> Html Msg

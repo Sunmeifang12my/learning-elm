@@ -78,6 +78,7 @@ updatePlayer playerId model =
         { model
             | players = newPlayers
             , plays = newPlays
+            , playerId = Nothing
         }
 
 
@@ -169,6 +170,7 @@ edit : Player -> Model -> Model
 edit player model =
     { model
         | name = player.name
+        , playerId = Just player.id
     }
 
 

@@ -139,6 +139,19 @@ score player points model =
         }
 
 
+deletePlay : Play -> Model -> Model
+deletePlay play model =
+    let
+        newPlays =
+            List.filter
+                (\p -> p.id /= play.id)
+                model.plays
+    in
+        { model
+            | plays = newPlays
+        }
+
+
 update : Msg -> Model -> Model
 update msg model =
     case msg of
@@ -161,6 +174,9 @@ update msg model =
         Score player points ->
             score player points model
 
+        DeletePlay play ->
+            deletePlay play model
+
         _ ->
             model
 
@@ -172,6 +188,7 @@ view model =
             [ text "Score Keeper" ]
         , playerSection model
         , playerForm model
+        , playSection model
         , p [] [ text (toString model) ]
         ]
 
@@ -253,6 +270,42 @@ playerForm model =
             []
         , button [ type' "submit" ] [ text "Save" ]
         , button [ type' "button", onClick Cancel ] [ text "Cancel" ]
+        ]
+
+
+playSection : Model -> Html Msg
+playSection model =
+    div []
+        [ playListHeader
+        , playList model
+        ]
+
+
+playListHeader : Html Msg
+playListHeader =
+    header []
+        [ div [] [ text "Plays" ]
+        , div [] [ text "Points" ]
+        ]
+
+
+playList : Model -> Html Msg
+playList model =
+    model.plays
+        |> List.map play
+        |> ul []
+
+
+play : Play -> Html Msg
+play play =
+    li []
+        [ i
+            [ class "remove"
+            , onClick (DeletePlay play)
+            ]
+            []
+        , div [] [ text play.name ]
+        , div [] [ text (toString play.points) ]
         ]
 
 

@@ -146,9 +146,22 @@ deletePlay play model =
             List.filter
                 (\p -> p.id /= play.id)
                 model.plays
+
+        newPlayers =
+            List.map
+                (\player ->
+                    if player.id == play.playerId then
+                        { player
+                            | points = (player.points - play.points)
+                        }
+                    else
+                        player
+                )
+                model.players
     in
         { model
             | plays = newPlays
+            , players = newPlayers
         }
 
 

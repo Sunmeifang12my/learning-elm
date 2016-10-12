@@ -271,6 +271,17 @@ TODO: create functions for each of the above.
 
 There is a starter environment in the directory "05 scorekeeper-starter".
 
+## Building the Scorekeeper App
+
+Adding to a list:
+
+```elm
+1 :: [2, 3]
+[1] ++ [2, 3]
+```
+
+Lists are singly linked lists.
+
 ## Resources
 
 * [Elm Syntax](http://elm-lang.org/docs/syntax)

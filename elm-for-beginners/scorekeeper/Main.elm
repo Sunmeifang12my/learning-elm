@@ -1,5 +1,6 @@
 module Main exposing (..)
 
+import String
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
@@ -50,34 +51,50 @@ type Msg
 updatePlayer : Int -> Model -> Model
 updatePlayer playerId model =
     let
-        players =
+        newPlayers =
             List.map
-                (\p ->
-                    if p.id == playerId then
-                        { p
+                (\player ->
+                    if player.id == playerId then
+                        { player
                             | name = model.name
                         }
                     else
-                        p
+                        player
                 )
                 model.players
+
+        newPlays =
+            List.map
+                (\play ->
+                    if play.playerId == playerId then
+                        { play
+                            | name = model.name
+                        }
+                    else
+                        play
+                )
+                model.plays
     in
         { model
-            | players = players
+            | players = newPlayers
+            , plays = newPlays
         }
 
 
 createPlayer : Model -> Model
 createPlayer model =
     let
-        newPlayer =
-            Player 123 model.name 0
+        newId =
+            (List.length model.players) + 1
 
-        players =
+        newPlayer =
+            Player newId model.name 0
+
+        newPlayers =
             newPlayer :: model.players
     in
         { model
-            | players = players
+            | players = newPlayers
         }
 
 
@@ -99,7 +116,10 @@ update msg model =
                 { model | name = name }
 
         Save ->
-            savePlayer model
+            if (String.isEmpty model.name) then
+                model
+            else
+                savePlayer model
 
         Cancel ->
             { model
@@ -131,7 +151,7 @@ playerForm model =
             , value model.name
             ]
             []
-        , button [ type' "submit", onClick Save ] [ text "Save" ]
+        , button [ type' "submit" ] [ text "Save" ]
         , button [ type' "button", onClick Cancel ] [ text "Cancel" ]
         ]
 

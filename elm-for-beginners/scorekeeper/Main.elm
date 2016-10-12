@@ -47,6 +47,50 @@ type Msg
     | DeletePlay Play
 
 
+updatePlayer : Int -> Model -> Model
+updatePlayer playerId model =
+    let
+        players =
+            List.map
+                (\p ->
+                    if p.id == playerId then
+                        { p
+                            | name = model.name
+                        }
+                    else
+                        p
+                )
+                model.players
+    in
+        { model
+            | players = players
+        }
+
+
+createPlayer : Model -> Model
+createPlayer model =
+    let
+        newPlayer =
+            Player 123 model.name 0
+
+        players =
+            newPlayer :: model.players
+    in
+        { model
+            | players = players
+        }
+
+
+savePlayer : Model -> Model
+savePlayer model =
+    case model.playerId of
+        Just playerId ->
+            updatePlayer playerId model
+
+        Nothing ->
+            createPlayer model
+
+
 update : Msg -> Model -> Model
 update msg model =
     case msg of
@@ -55,36 +99,7 @@ update msg model =
                 { model | name = name }
 
         Save ->
-            case model.playerId of
-                Just playerId ->
-                    let
-                        players =
-                            List.map
-                                (\p ->
-                                    if p.id == playerId then
-                                        { p
-                                            | name = model.name
-                                        }
-                                    else
-                                        p
-                                )
-                                model.players
-                    in
-                        { model
-                            | players = players
-                        }
-
-                Nothing ->
-                    let
-                        newPlayer =
-                            Player 123 model.name 0
-
-                        players =
-                            newPlayer :: model.players
-                    in
-                        { model
-                            | players = players
-                        }
+            savePlayer model
 
         Cancel ->
             { model

@@ -108,6 +108,37 @@ savePlayer model =
             createPlayer model
 
 
+score : Player -> Int -> Model -> Model
+score player points model =
+    let
+        newPoints =
+            player.points + points
+
+        newPlayers =
+            List.map
+                (\player' ->
+                    if player'.id == player.id then
+                        { player'
+                            | points = newPoints
+                        }
+                    else
+                        player
+                )
+                model.players
+
+        newPlayId =
+            (List.length model.plays) + 1
+
+        newPlays =
+            Play newPlayId player.id player.name points
+                :: model.plays
+    in
+        { model
+            | players = newPlayers
+            , plays = newPlays
+        }
+
+
 update : Msg -> Model -> Model
 update msg model =
     case msg of
@@ -127,6 +158,9 @@ update msg model =
                 , playerId = Nothing
             }
 
+        Score player points ->
+            score player points model
+
         _ ->
             model
 
@@ -136,9 +170,75 @@ view model =
     div [ class "scoreboard" ]
         [ h1 []
             [ text "Score Keeper" ]
+        , playerSection model
         , playerForm model
         , p [] [ text (toString model) ]
         ]
+
+
+playerSection : Model -> Html Msg
+playerSection model =
+    div []
+        [ playerListHeader
+        , playerList model
+        , pointTotal model
+        ]
+
+
+playerListHeader : Html Msg
+playerListHeader =
+    header []
+        [ div [] [ text "Name" ]
+        , div [] [ text "Points" ]
+        ]
+
+
+player : Player -> Html Msg
+player player =
+    li []
+        [ i
+            [ class "edit"
+            , onClick (Edit player)
+            ]
+            []
+        , div []
+            [ text player.name ]
+        , button
+            [ type' "button"
+            , onClick (Score player 2)
+            ]
+            [ text "2pt" ]
+        , button
+            [ type' "button"
+            , onClick (Score player 3)
+            ]
+            [ text "3pt" ]
+        , div []
+            [ text (toString player.points) ]
+        ]
+
+
+playerList : Model -> Html Msg
+playerList model =
+    -- ul []
+    --     (List.map player model.players)
+    model.players
+        |> List.sortBy .name
+        |> List.map player
+        |> ul []
+
+
+pointTotal : Model -> Html Msg
+pointTotal model =
+    let
+        total =
+            List.map .points model.plays
+                |> List.sum
+    in
+        footer []
+            [ div [] [ text "Total:" ]
+            , div [] [ text (toString total) ]
+            ]
 
 
 playerForm : Model -> Html Msg

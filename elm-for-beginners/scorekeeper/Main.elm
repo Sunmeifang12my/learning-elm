@@ -232,15 +232,44 @@ playerListHeader =
         ]
 
 
-player : Player -> Html Msg
-player player =
+editStyle : List ( String, String )
+editStyle =
+    [ ( "backgroundColor", "cyan" ) ]
+
+
+playerStyle : Model -> Player -> List ( String, String )
+playerStyle model player =
+    case model.playerId of
+        Just playerId ->
+            if playerId == player.id then
+                editStyle
+            else
+                []
+
+        Nothing ->
+            []
+
+
+inputStyle : Model -> List ( String, String )
+inputStyle model =
+    case model.playerId of
+        Just playerId ->
+            editStyle
+
+        Nothing ->
+            []
+
+
+player : Model -> Player -> Html Msg
+player model player =
     li []
         [ i
             [ class "edit"
             , onClick (Edit player)
             ]
             []
-        , div []
+        , div
+            [ style (playerStyle model player) ]
             [ text player.name ]
         , button
             [ type' "button"
@@ -263,7 +292,7 @@ playerList model =
     --     (List.map player model.players)
     model.players
         |> List.sortBy .name
-        |> List.map player
+        |> List.map (player model)
         |> ul []
 
 
@@ -288,6 +317,7 @@ playerForm model =
             , placeholder "Add/Edit player"
             , onInput Input
             , value model.name
+            , style (inputStyle model)
             ]
             []
         , button [ type' "submit" ] [ text "Save" ]

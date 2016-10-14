@@ -22,3 +22,9 @@ sections that delegate to the corresponding page modules.
 
 The name of the module for each page must match its filename. The modules need to expose their
 model-view-update functions.
+
+## Effects
+
+Impure things with side effects like HTTP, websockets, local storage (anything that talks to the outside world). Most of Elm programs are built in pure functions as those are testable, composable, and cacheable etc.
+
+In Elm we offload state to the Html.App module. Effects are handled via messages in the update function. Instead of having the update function return just the Model though we now return (Model, Cmd Msg). Commands (Cmd) are just data structures with instructions on what to do. The dirty work is handled by the framework/libraries. A command will either succeed or fail.

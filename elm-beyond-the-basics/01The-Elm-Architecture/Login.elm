@@ -53,6 +53,7 @@ view model =
                 [ type' "text"
                 , onInput UsernameInput
                 , placeholder "username"
+                , value model.username
                 ]
                 []
             , input

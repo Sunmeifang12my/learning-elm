@@ -198,6 +198,8 @@ elm-format
 
 * [Course: Elm for Beginners](http://courses.knowthen.com/courses/elm-for-beginners)
 * [Elm Conf](https://www.elm-conf.us)
+* [create-elm-app](https://www.npmjs.com/package/create-elm-app)
+* [Heroku buildpack and TODOMVC app](https://github.com/HappyAndHarmless/heroku-buildpack-elm)
 * [Book: Elm in Action](https://www.manning.com/books/elm-in-action)
 * [Learn X in Y Minutes](https://learnxinyminutes.com/docs/elm/)
 * [Elm Syntax](http://elm-lang.org/docs/syntax)

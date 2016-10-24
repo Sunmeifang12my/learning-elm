@@ -178,3 +178,5 @@ gulp
 ### Building the App
 
 We can follow along with the [lectures here](http://courses.knowthen.com/courses/elm-for-beginners/lectures/1254149)
+
+If you get stuck along the way, you can take a look at the completed solution in this repo under [elm-for-beginners/scorekeeper](https://github.com/peter/learning-elm/tree/master/elm-for-beginners/scorekeeper).

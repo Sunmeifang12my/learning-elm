@@ -123,7 +123,7 @@ score player points model =
                             | points = newPoints
                         }
                     else
-                        player
+                        player'
                 )
                 model.players
 

@@ -91,6 +91,86 @@ else
 
 ## Creating the Scorekeeper app
 
-You can copy the needed files from the [elm-for-beginners/scorekeeper dir](https://github.com/peter/learning-elm/tree/master/elm-for-beginners/scorekeeper) in this repo.
-
 Take a look at the [wireframe](scorekeeper-wireframe.png) to see what we'll be building.
+
+### Model
+
+
+```elm
+type alias Model =
+  { players : List Player
+  , playerName : String
+  , playerId : Maybe Int
+  , plays : List Play
+ }
+
+type alias Player =
+  { id : Int
+  , name : String
+}
+
+type alias Play =
+  { id: Int
+  , playerId : Int
+  , name : String
+  , points : Int}
+```
+
+TODO: initial model
+
+### Update
+
+What can be done in our app?
+
+* Edit
+* Score
+* Input
+* Save
+* Cancel
+* DeletePlay
+
+TODO: Message union type
+
+TODO: update function
+
+### View
+
+UI hierarchy:
+
+* main view
+  * player section
+    * player list header
+    * player list
+      * player
+    * point total
+  * player form
+  * play section
+    * play list header
+    * play list
+      * play
+
+TODO: create functions for each of the components above
+
+### Build Process
+
+You can copy the needed files from the [scorekeeper dir](https://github.com/peter/learning-elm/tree/master/workshop-2016-10-24/scorekeeper) in this repo.
+
+Install dependencies:
+
+```
+npm install
+```
+
+Install the gulp build tool:
+
+```
+npm install gulp -g
+```
+
+Gulp will compile Elm to JavaScript for us and start a Node.js http server.
+
+Start the server:
+
+```
+gulp
+```

@@ -174,3 +174,7 @@ Start the server:
 ```
 gulp
 ```
+
+### Building the App
+
+We can follow along with the [lectures here](http://courses.knowthen.com/courses/elm-for-beginners/lectures/1254149)

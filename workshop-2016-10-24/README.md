@@ -5,7 +5,7 @@ Meet the Elm programming language:
 * Domain specific language targeting UI in the browser (HTML, CSS, JavaScript)
 * Purely functional (pure functions and immutable data)
 * Statically typed with few runtime exceptions
-* Uses a virtual DOM approach to genering HTML (like React.js)
+* Uses a virtual DOM approach to generating HTML (like React.js)
 * The basic Elm architecture is Model - Update - View.
 * Released by Evan Czaplicki in 2012
 
